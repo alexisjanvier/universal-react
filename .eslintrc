@@ -26,6 +26,7 @@
         "react/jsx-filename-extension": "off",
         "react/jsx-indent": ["error", 4],
         "react/jsx-indent-props": ["error", 4],
+        "react/forbid-prop-types": "off",
         "jsx-a11y/href-no-hash": "off",
         "jsx-a11y/anchor-is-valid": ["warn", { "aspects": ["invalidHref"] }]
     }

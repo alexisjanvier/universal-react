@@ -1,0 +1,51 @@
+{
+  "name": "universal-react-poc",
+  "version": "1.0.0",
+  "description": "Try to setup a react app with rr4, redux, saga, code spliting and SSR.",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alexisjanvier/universal-react.git"
+  },
+  "scripts": {
+    "wpds": "./node_modules/.bin/webpack-dev-server --config ./webpack.config.js --devtool cheap-eval-source-map --inline --hot --port 8080 --content-base dist/",
+    "build": "NODE_ENV=production webpack --config webpack.config.js"
+  },
+  "keywords": [
+    "react",
+    "redux",
+    "saga",
+    "rr4",
+    "ssr",
+    "code-spliting"
+  ],
+  "author": "Alexis Janvier alexis@marmerlab",
+  "license": "MIT",
+  "dependencies": {
+    "material-ui": "^1.0.0-alpha.21",
+    "material-ui-icons": "^1.0.0-alpha.19",
+    "prop-types": "^15.5.10",
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1",
+    "typeface-roboto": "0.0.31"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.24.1",
+    "babel-core": "^6.25.0",
+    "babel-eslint": "^7.2.3",
+    "babel-loader": "^7.1.0",
+    "babel-plugin-syntax-dynamic-import": "^6.18.0",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-env": "1.5.2",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "eslint": "^4.2.0",
+    "eslint-config-airbnb": "^15.0.2",
+    "eslint-plugin-import": "^2.7.0",
+    "eslint-plugin-jsx-a11y": "^6.0.2",
+    "eslint-plugin-react": "^7.1.0",
+    "html-webpack-plugin": "^2.29.0",
+    "webpack": "^3.2.0",
+    "webpack-dev-server": "^2.5.1"
+  }
+}

@@ -50,6 +50,7 @@
     "eslint-plugin-react": "^7.1.0",
     "html-webpack-plugin": "^2.29.0",
     "webpack": "^3.2.0",
+    "webpack-bundle-analyzer": "^2.8.3",
     "webpack-dev-server": "^2.5.1"
   }
 }

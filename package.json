@@ -22,6 +22,7 @@
   "author": "Alexis Janvier alexis@marmerlab",
   "license": "MIT",
   "dependencies": {
+    "date-fns": "^1.28.5",
     "lodash.debounce": "^4.0.8",
     "material-ui": "^1.0.0-alpha.21",
     "material-ui-icons": "^1.0.0-alpha.19",

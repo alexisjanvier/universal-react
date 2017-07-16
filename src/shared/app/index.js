@@ -5,7 +5,7 @@ import { Route, Switch } from 'react-router-dom';
 import HomePage from '../home/HomePage';
 import SearchAlbumPage from '../albums/SearchPage';
 import AlbumPage from '../albums/AlbumPage';
-import PlayListListPage from '../playlists/ListPage';
+import PlayListsPage from '../playlists/ListPage';
 import PlaylistPage from '../playlists/PlaylistPage';
 import MainMenu from './mainMenu';
 
@@ -24,8 +24,8 @@ const App = () => (
         <MainMenu />
         <Switch>
             <Route exact path="/" component={HomePage} />
-            <Route path="/playlists/:playlistId(PL-[0-9]{0,6})" component={PlaylistPage} />
-            <Route path="/playlists" component={PlayListListPage} />
+            <Route path="/playlists/:playlistId(pl-[a-z]{0,4})" component={PlaylistPage} />
+            <Route path="/playlists" component={PlayListsPage} />
             <Route path="/search-album" component={SearchAlbumPage} />
             <Route path="/albums/:albumSlug" component={AlbumPage} />
         </Switch>

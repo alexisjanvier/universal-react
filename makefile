@@ -10,4 +10,4 @@ dev: ## Start webpack-dev-server
 	npm run wpds
 
 analyse:
-	NODE_ENV=analyse ./node_modules/.bin/webpack --config webpack.config.js
+	NODE_ENV=analyse ./node_modules/.bin/webpack --config webpack.config.js -p

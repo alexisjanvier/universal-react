@@ -11,6 +11,13 @@ const plugins = [
         title: 'Get real playlists to share with Spotify',
         template: path.resolve(__dirname, 'src/client/index.ejs'),
     }),
+    new webpack.optimize.CommonsChunkPlugin({
+        name: 'vendor',
+        minChunks: Infinity,
+    }),
+    new webpack.DefinePlugin({
+        'process.env.NODE_ENV': '"production"',
+    }),
 ];
 
 if (process.env.NODE_ENV === 'analyse') {
@@ -22,6 +29,7 @@ module.exports = {
     target: 'web',
     entry: {
         client: `${srcPath}/client/index.js`,
+        vendor: ['react', 'react-dom', 'react-router-dom'],
     },
     output: {
         path: distPath,

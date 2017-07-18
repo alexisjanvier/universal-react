@@ -1,0 +1,20 @@
+{
+    "apps" : [
+        {
+            "name": "universal-react-server",
+            "exec_mode": "fork_mode",
+            "script": "dist/server.js",
+            "watch": ["dist"]
+        },
+        {
+            "name": "universal-react-build-server",
+            "script": "./node_modules/.bin/webpack",
+            "args" : "--config webpack.server.config.js --watch"
+        },
+        {
+            "name": "universal-react-build-client",
+            "script": "./node_modules/.bin/webpack",
+            "args" : "--config webpack.client.config.js --watch"
+        }
+    ]
+}

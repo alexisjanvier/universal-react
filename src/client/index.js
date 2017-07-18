@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import { MuiThemeProvider, createMuiTheme } from 'material-ui/styles';
 import createPalette from 'material-ui/styles/palette';
 import { BrowserRouter as Router } from 'react-router-dom';
+import { loadComponents } from 'loadable-components';
 
 import App from '../shared/app';
 
@@ -37,9 +38,11 @@ class Main extends Component {
 // Create a styleManager instance.
 const { styleManager, theme } = createStyleManager();
 
-render(
-    <MuiThemeProvider styleManager={styleManager} theme={theme}>
-        <Main />
-    </MuiThemeProvider>,
-    document.getElementById('root'),
-);
+loadComponents().then(() => {
+    render(
+        <MuiThemeProvider styleManager={styleManager} theme={theme}>
+            <Main />
+        </MuiThemeProvider>,
+        document.getElementById('root'),
+    );
+});

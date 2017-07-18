@@ -23,6 +23,7 @@
   "author": "Alexis Janvier alexis@marmerlab",
   "license": "MIT",
   "dependencies": {
+    "babel-runtime": "^6.23.0",
     "date-fns": "^1.28.5",
     "express": "^4.15.3",
     "loadable-components": "^0.2.0",

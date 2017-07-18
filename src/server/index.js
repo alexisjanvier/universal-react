@@ -5,6 +5,7 @@ import ReactDOMServer from 'react-dom/server';
 import { StaticRouter } from 'react-router-dom';
 import { MuiThemeProvider, createMuiTheme } from 'material-ui/styles';
 import createPalette from 'material-ui/styles/palette';
+import { getLoadableState } from 'loadable-components/server';
 // import { green, red } from 'material-ui/styles/colors';
 
 import App from '../shared/app';
@@ -24,7 +25,7 @@ const createStyleManager = () => MuiThemeProvider.createDefaultContext({
 const app = express();
 app.use('/assets', express.static('./dist'));
 
-app.get('*', (req, res) => {
+app.get('*', async (req, res) => {
     const context = {};
     const { styleManager, theme } = createStyleManager();
 
@@ -41,10 +42,11 @@ app.get('*', (req, res) => {
         return;
     }
 
+    const loadableState = await getLoadableState(appWithRouter);
     const html = ReactDOMServer.renderToString(appWithRouter);
     const css = styleManager.sheetsToString();
 
-    res.status(200).send(render(html, css));
+    res.status(200).send(render(html, css, loadableState));
 });
 
 app.listen(3000, () => console.log('Demo app listening on port 3000'));

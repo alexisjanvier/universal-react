@@ -1,5 +1,14 @@
 {
-    "plugins": ["dynamic-import-webpack"],
+    "plugins": [
+        ["dynamic-import-webpack"],
+        ["syntax-dynamic-import"],
+        ["transform-runtime", {
+            "helpers": false,
+            "polyfill": false,
+            "regenerator": true,
+            "moduleName": "babel-runtime"
+        }]
+    ],
     "presets": [
         "react",
         [

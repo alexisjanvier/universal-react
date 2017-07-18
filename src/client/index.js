@@ -4,8 +4,10 @@ import { MuiThemeProvider, createMuiTheme } from 'material-ui/styles';
 import createPalette from 'material-ui/styles/palette';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { loadComponents } from 'loadable-components';
+import { Provider } from 'react-redux';
 
 import App from '../shared/app';
+import store from '../shared/app/store';
 
 const createStyleManager = () => MuiThemeProvider.createDefaultContext({
     theme: createMuiTheme({
@@ -41,7 +43,9 @@ const { styleManager, theme } = createStyleManager();
 loadComponents().then(() => {
     render(
         <MuiThemeProvider styleManager={styleManager} theme={theme}>
-            <Main />
+            <Provider store={store}>
+                <Main />
+            </Provider>
         </MuiThemeProvider>,
         document.getElementById('root'),
     );

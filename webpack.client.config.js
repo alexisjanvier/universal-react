@@ -29,7 +29,7 @@ module.exports = {
     target: 'web',
     entry: {
         client: `${srcPath}/client/index.js`,
-        vendor: ['react', 'react-dom', 'react-router-dom'],
+        vendor: ['react', 'react-dom', 'react-router-dom', 'redux', 'redux-saga', 'react-redux'],
     },
     output: {
         path: distPath,

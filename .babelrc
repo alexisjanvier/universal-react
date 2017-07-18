@@ -1,4 +1,5 @@
 {
+    "plugins": ["dynamic-import-webpack"],
     "presets": [
         "react",
         [

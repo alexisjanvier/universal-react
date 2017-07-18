@@ -2,11 +2,7 @@ import React from 'react';
 import { withStyles, createStyleSheet } from 'material-ui/styles';
 import { Route, Switch } from 'react-router-dom';
 
-import HomePage from '../home/HomePage';
-import SearchAlbumPage from '../albums/SearchPage';
-import AlbumPage from '../albums/AlbumPage';
-import PlayListsPage from '../playlists/ListPage';
-import PlaylistPage from '../playlists/PlaylistPage';
+import * as Routes from './routes';
 import MainMenu from './mainMenu';
 
 const styleSheet = createStyleSheet('ButtonAppBar', {
@@ -23,11 +19,11 @@ const App = () => (
     <div>
         <MainMenu />
         <Switch>
-            <Route exact path="/" component={HomePage} />
-            <Route path="/playlists/:playlistId(pl-[a-z]{0,4})" component={PlaylistPage} />
-            <Route path="/playlists" component={PlayListsPage} />
-            <Route path="/search-album" component={SearchAlbumPage} />
-            <Route path="/albums/:albumSlug" component={AlbumPage} />
+            <Route exact path="/" component={Routes.HomePage} />
+            <Route path="/playlists/:playlistId(pl-[a-z]{0,4})" component={Routes.PlaylistPage} />
+            <Route path="/playlists" component={Routes.PlayListsPage} />
+            <Route path="/search-album" component={Routes.SearchAlbumPage} />
+            <Route path="/albums/:albumSlug" component={Routes.AlbumPage} />
         </Switch>
     </div>
 );

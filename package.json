@@ -25,6 +25,7 @@
   "dependencies": {
     "date-fns": "^1.28.5",
     "express": "^4.15.3",
+    "loadable-components": "^0.2.0",
     "lodash.debounce": "^4.0.8",
     "material-ui": "^1.0.0-alpha.21",
     "material-ui-icons": "^1.0.0-alpha.19",
@@ -41,6 +42,7 @@
     "babel-core": "^6.25.0",
     "babel-eslint": "^7.2.3",
     "babel-loader": "^7.1.1",
+    "babel-plugin-dynamic-import-webpack": "^1.0.1",
     "babel-plugin-syntax-dynamic-import": "^6.18.0",
     "babel-plugin-transform-runtime": "^6.23.0",
     "babel-preset-env": "1.5.2",

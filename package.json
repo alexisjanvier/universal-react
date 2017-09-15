@@ -26,6 +26,8 @@
     "babel-runtime": "^6.23.0",
     "date-fns": "^1.28.5",
     "express": "^4.15.3",
+    "history": "^4.7.2",
+    "isomorphic-fetch": "^2.2.1",
     "loadable-components": "^0.2.0",
     "lodash.debounce": "^4.0.8",
     "material-ui": "^1.0.0-alpha.21",
@@ -37,6 +39,8 @@
     "react-dom": "^15.6.1",
     "react-redux": "^5.0.5",
     "react-router-dom": "^4.1.2",
+    "react-router-redux": "^5.0.0-alpha.6",
+    "recompose": "^0.25.0",
     "redux": "^3.7.2",
     "redux-saga": "^0.15.4",
     "typeface-roboto": "0.0.31"

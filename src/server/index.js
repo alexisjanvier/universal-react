@@ -7,7 +7,6 @@ import { MuiThemeProvider, createMuiTheme } from 'material-ui/styles';
 import createPalette from 'material-ui/styles/palette';
 import { getLoadableState } from 'loadable-components/server';
 import { Provider } from 'react-redux';
-// import { green, red } from 'material-ui/styles/colors';
 
 import App from '../shared/app';
 import store from '../shared/app/store';
@@ -16,8 +15,6 @@ import render from './render';
 const createStyleManager = () => MuiThemeProvider.createDefaultContext({
     theme: createMuiTheme({
         palette: createPalette({
-            // primary: green,
-            // accent: red,
             type: 'light',
         }),
     }),

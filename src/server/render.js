@@ -1,4 +1,4 @@
-export default (html, css, loadableState) => `
+export default (html, css, loadableState, preloadedState) => `
     <!DOCTYPE html>
     <html lang="en">
         <head>
@@ -9,6 +9,11 @@ export default (html, css, loadableState) => `
         </head>
         <body>
             <div id="root">${html}</div>
+            <script>
+                // WARNING: See the following for security issues around embedding JSON in HTML:
+                // http://redux.js.org/docs/recipes/ServerRendering.html#security-considerations
+                window.__PRELOADED_STATE__ = ${JSON.stringify(preloadedState).replace(/</g, '\\u003c')}
+            </script>
             <style id="jss-server-side">${css}</style>
             <script src="/assets/vendor.js"></script>
             <script src="/assets/client.js"></script>

@@ -9,8 +9,9 @@ import { getLoadableState } from 'loadable-components/server';
 import { Provider } from 'react-redux';
 
 import App from '../shared/app';
-import store from '../shared/app/store';
+import configureStore from './store';
 import render from './render';
+import sagas from '../shared/home/sagas';
 
 const createStyleManager = () => MuiThemeProvider.createDefaultContext({
     theme: createMuiTheme({
@@ -25,6 +26,7 @@ const app = express();
 app.use('/assets', express.static('./dist'));
 
 app.get('*', async (req, res) => {
+    const store = configureStore();
     const context = {};
     const { styleManager, theme } = createStyleManager();
 
@@ -42,12 +44,22 @@ app.get('*', async (req, res) => {
         res.redirect(context.url);
         return;
     }
+    let loadableState = {};
 
-    const loadableState = await getLoadableState(appWithRouter);
-    const html = ReactDOMServer.renderToString(appWithRouter);
-    const css = styleManager.sheetsToString();
+    store.runSaga(sagas).done.then(() => {
+        const html = ReactDOMServer.renderToString(appWithRouter);
+        const preloadedState = store.getState();
+        const css = styleManager.sheetsToString();
 
-    res.status(200).send(render(html, css, loadableState));
+        return res.status(200).send(render(html, css, loadableState, preloadedState));
+    });
+
+    // Trigger sagas for component to run
+    // https://github.com/yelouafi/redux-saga/issues/255#issuecomment-210275959
+    loadableState = await getLoadableState(appWithRouter);
+
+    // Dispatch a close event so sagas stop listening after they're resolved
+    store.close();
 });
 
 app.listen(3000, () => console.log('Demo app listening on port 3000'));

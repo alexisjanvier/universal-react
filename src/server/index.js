@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 import express from 'express';
 import React from 'react';
-import ReactDOMServer from 'react-dom/server';
+import { renderToNodeStream } from 'react-dom/server';
 import { StaticRouter } from 'react-router-dom';
 import { MuiThemeProvider, createMuiTheme } from 'material-ui/styles';
 import createPalette from 'material-ui/styles/palette';
@@ -10,17 +10,17 @@ import { Provider } from 'react-redux';
 
 import App from '../shared/app';
 import configureStore from './store';
-import render from './render';
+import { renderHeader, renderFooter } from './render';
 import sagas from '../shared/home/sagas';
 
-const createStyleManager = () => MuiThemeProvider.createDefaultContext({
-    theme: createMuiTheme({
-        palette: createPalette({
-            type: 'light',
+const createStyleManager = () =>
+    MuiThemeProvider.createDefaultContext({
+        theme: createMuiTheme({
+            palette: createPalette({
+                type: 'light',
+            }),
         }),
-    }),
-});
-
+    });
 
 const app = express();
 app.use('/assets', express.static('./dist'));
@@ -47,11 +47,17 @@ app.get('*', async (req, res) => {
     let loadableState = {};
 
     store.runSaga(sagas).done.then(() => {
-        const html = ReactDOMServer.renderToString(appWithRouter);
+        res.status(200).write(renderHeader());
+
         const preloadedState = store.getState();
         const css = styleManager.sheetsToString();
 
-        return res.status(200).send(render(html, css, loadableState, preloadedState));
+        const htmlSteam = renderToNodeStream(appWithRouter);
+        htmlSteam.pipe(res, { end: false });
+        htmlSteam.on('end', () => {
+            res.write(renderFooter(css, loadableState, preloadedState));
+            return res.send();
+        });
     });
 
     // Trigger sagas for component to run

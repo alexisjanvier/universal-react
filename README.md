@@ -22,9 +22,10 @@ You can follow the various steps by following the repository tags :
 * step-3          SSR without code splitting
 * step-4          Dynamic code splitting working client side
 * step-5          Dynamic code splitting working server side
+* step-final      Final demo code with react 15 and redux saga
 
 
-The final code including a redux saga is on the master branch.
+The master branch now uses React 16 and its feature `stream` for SSR (thanks to [Maxime](https://github.com/zyhou)).
 
 ## React Router v4, SSR, Redux Saga et Code Splitting sont dans un bateau
 
@@ -50,5 +51,6 @@ Vous pouvez suivre les différentes étapes en suivant les tags du dépôt :
 * step-3          Mise en place du rendu serveur sans code splitting dynamique
 * step-4          code splitting dynamique côté client
 * step-5          code splitting dynamique côté serveur
+* step-final      Final demo code with react 15 and redux saga
 
-La code final incluant en plus une redux saga correspond à la branche master.
+La branche master utilise maintenant React 16 et sa feature `stream` pour le SSR (merci à [Maxime](https://github.com/zyhou)).

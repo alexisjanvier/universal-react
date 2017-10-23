@@ -1,4 +1,4 @@
-export default (html, css, loadableState, preloadedState) => `
+export const renderHeader = () => `
     <!DOCTYPE html>
     <html lang="en">
         <head>
@@ -8,7 +8,11 @@ export default (html, css, loadableState, preloadedState) => `
             <link rel="icon" type="image/png" href="/assets/favicon.ico" />
         </head>
         <body>
-            <div id="root">${html}</div>
+            <div id="root">
+`;
+
+export const renderFooter = (css, loadableState, preloadedState) => `
+            </div>
             <script>
                 // WARNING: See the following for security issues around embedding JSON in HTML:
                 // http://redux.js.org/docs/recipes/ServerRendering.html#security-considerations

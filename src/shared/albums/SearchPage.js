@@ -4,6 +4,7 @@ import Input from 'material-ui/Input/Input';
 import PropTypes from 'prop-types';
 import qs from 'query-string';
 import React, { Component } from 'react';
+import Helmet from 'react-helmet';
 
 import albumsData from './albumsData';
 
@@ -48,6 +49,9 @@ class SearchPage extends Component {
 
         return (
             <div>
+                <Helmet
+                    title="Search an album"
+                />
                 <h1>Search an album</h1>
                 Album title: <Input
                     value={this.state.value}

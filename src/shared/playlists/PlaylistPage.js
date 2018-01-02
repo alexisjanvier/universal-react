@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import Helmet from 'react-helmet';
 
 import { withStyles, createStyleSheet } from 'material-ui/styles';
 import List, { ListItem, ListItemIcon } from 'material-ui/List';
@@ -20,6 +21,9 @@ const PlaylistPage = ({ classes, match }) => {
     const playlist = playlists.find(pl => pl.id === match.params.playlistId);
     return (
         <div className={classes.root}>
+            <Helmet
+                title={playlist.title}
+            />
             <h1>{playlist.title}</h1>
             <List>
                 {playlist.albums.map(album => (

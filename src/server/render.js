@@ -1,13 +1,15 @@
-export const renderHeader = () => `
+export const renderHeader = helmet => `
     <!DOCTYPE html>
     <html lang="en">
         <head>
             <meta charset="UTF-8">
-            <title>Get real playlists to share with Spotify</title>
+            ${helmet.title.toString()}
+            ${helmet.meta.toString()}
+            ${helmet.link.toString()}
             <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
             <link rel="icon" type="image/png" href="/assets/favicon.ico" />
         </head>
-        <body>
+        <body ${helmet.bodyAttributes.toString()}>
             <div id="root">
 `;
 

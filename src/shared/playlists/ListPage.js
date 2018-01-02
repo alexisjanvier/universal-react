@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import { withStyles, createStyleSheet } from 'material-ui/styles';
 import List, { ListItem, ListItemIcon } from 'material-ui/List';
 import InboxIcon from 'material-ui-icons/Inbox';
+import Helmet from 'react-helmet';
 
 import { genres } from './playlists';
 import { loadPlaylist as loadPlaylistAction } from './actions';
@@ -28,6 +29,9 @@ export class Page extends Component {
         const filteredPlalists = genre ? playlists.filter(pl => pl.genre === genre) : playlists;
         return (
             <div className={classes.root}>
+                <Helmet
+                    title="Playlists"
+                />
                 <h1>Your playlists</h1>
                 {playlists.length && <List>
                     {filteredPlalists.map(pl => (

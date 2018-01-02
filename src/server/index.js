@@ -7,6 +7,7 @@ import { MuiThemeProvider, createMuiTheme } from 'material-ui/styles';
 import createPalette from 'material-ui/styles/palette';
 import { getLoadableState } from 'loadable-components/server';
 import { Provider } from 'react-redux';
+import { Helmet } from 'react-helmet';
 
 import App from '../shared/app';
 import configureStore from './store';
@@ -47,7 +48,8 @@ app.get('*', async (req, res) => {
     let loadableState = {};
 
     store.runSaga(sagas).done.then(() => {
-        res.status(200).write(renderHeader());
+        const helmet = Helmet.renderStatic();
+        res.status(200).write(renderHeader(helmet));
 
         const preloadedState = store.getState();
         const css = styleManager.sheetsToString();
